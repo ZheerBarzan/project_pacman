@@ -10,6 +10,25 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.grey.shade800,
+      body: Column(
+        children: [
+          // the map area
+          Expanded(
+            flex: 5,
+            child: Container(
+              color: Colors.blue,
+            ),
+          ),
+          // the socre area
+          Expanded(
+            child: Container(
+              color: Colors.red,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
