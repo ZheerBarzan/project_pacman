@@ -10,11 +10,11 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   static int numberInRow = 11;
-  int numberOfSqures = numberInRow * 16;
+  int numberOfSqures = numberInRow * 17;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade800,
+      backgroundColor: Colors.black,
       body: Column(
         children: [
           // the map area
@@ -30,6 +30,7 @@ class _HomepageState extends State<Homepage> {
                       padding: const EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.grey,
+                        child: Center(child: Text(index.toString())),
                       ),
                     );
                   }),
