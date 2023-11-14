@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -37,9 +38,20 @@ class _HomepageState extends State<Homepage> {
           // the socre area
           Expanded(
             child: Container(
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [Text("Score:"), Text("PLAY")],
+                children: [
+                  Text(
+                    "SCORE:",
+                    style: GoogleFonts.pressStart2p(
+                        color: Colors.white, fontSize: 20),
+                  ),
+                  Text(
+                    "PLAY",
+                    style: GoogleFonts.pressStart2p(
+                        color: Colors.white, fontSize: 20),
+                  )
+                ],
               ),
             ),
           ),
