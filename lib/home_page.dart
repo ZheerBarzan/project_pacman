@@ -8,6 +8,8 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  static int numberInRow = 11;
+  int numberOfSqures = numberInRow * 16;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +20,18 @@ class _HomepageState extends State<Homepage> {
           Expanded(
             flex: 5,
             child: Container(
-              color: Colors.blue,
+              child: GridView.builder(
+                  itemCount: numberOfSqures,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: numberInRow),
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        color: Colors.grey,
+                      ),
+                    );
+                  }),
             ),
           ),
           // the socre area
