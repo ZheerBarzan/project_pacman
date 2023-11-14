@@ -26,7 +26,7 @@ class _HomepageState extends State<Homepage> {
                       crossAxisCount: numberInRow),
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.grey,
                       ),
@@ -37,7 +37,10 @@ class _HomepageState extends State<Homepage> {
           // the socre area
           Expanded(
             child: Container(
-              color: Colors.red,
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [Text("Score:"), Text("PLAY")],
+              ),
             ),
           ),
         ],
