@@ -139,7 +139,7 @@ class _HomepageState extends State<Homepage> {
                       );
                     } else {
                       return MyPixel(
-                        color: Colors.grey,
+                        color: Colors.black,
                         child: index,
                       );
                     }
