@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_pacman/pixel.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -132,20 +133,14 @@ class _HomepageState extends State<Homepage> {
                       crossAxisCount: numberInRow),
                   itemBuilder: (context, index) {
                     if (barriers.contains(index)) {
-                      return Padding(
-                        padding: const EdgeInsets.all(1.0),
-                        child: Container(
-                          color: Colors.blue,
-                          child: Center(child: Text(index.toString())),
-                        ),
+                      return MyPixel(
+                        child: index,
+                        color: Colors.blue,
                       );
                     } else {
-                      return Padding(
-                        padding: const EdgeInsets.all(1.0),
-                        child: Container(
-                          color: Colors.grey,
-                          child: Center(child: Text(index.toString())),
-                        ),
+                      return MyPixel(
+                        color: Colors.grey,
+                        child: index,
                       );
                     }
                   }),
