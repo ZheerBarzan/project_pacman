@@ -80,13 +80,23 @@ class _HomepageState extends State<Homepage> {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: numberInRow),
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(1.0),
-                      child: Container(
-                        color: Colors.grey,
-                        child: Center(child: Text(index.toString())),
-                      ),
-                    );
+                    if (barriers.contains(index)) {
+                      return Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: Container(
+                          color: Colors.blue,
+                          child: Center(child: Text(index.toString())),
+                        ),
+                      );
+                    } else {
+                      return Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: Container(
+                          color: Colors.grey,
+                          child: Center(child: Text(index.toString())),
+                        ),
+                      );
+                    }
                   }),
             ),
           ),
