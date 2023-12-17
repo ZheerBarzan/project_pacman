@@ -31,7 +31,6 @@ class _HomepageState extends State<Homepage> {
     55,
     66,
     77,
-    88,
     99,
     110,
     121,
@@ -57,7 +56,6 @@ class _HomepageState extends State<Homepage> {
     131,
     120,
     109,
-    98,
     87,
     76,
     65,
@@ -135,11 +133,13 @@ class _HomepageState extends State<Homepage> {
                     if (barriers.contains(index)) {
                       return MyPixel(
                         child: index,
-                        color: Colors.blue,
+                        innerColor: Colors.blue.shade800,
+                        outerColor: Colors.blue.shade900,
                       );
                     } else {
                       return MyPixel(
-                        color: Colors.black,
+                        innerColor: Colors.yellow,
+                        outerColor: Colors.black,
                         child: index,
                       );
                     }
