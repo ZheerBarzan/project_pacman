@@ -22,7 +22,6 @@ class MyPixel extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Container(
-              padding: const EdgeInsets.all(4),
               color: innerColor,
               //child: Center(child: Text("$child")),
             ),

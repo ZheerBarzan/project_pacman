@@ -17,7 +17,7 @@ class MyPath extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(6),
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(12),
           color: outerColor,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
