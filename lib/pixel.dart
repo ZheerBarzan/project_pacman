@@ -3,10 +3,10 @@ import "package:flutter/material.dart";
 class MyPixel extends StatelessWidget {
   final Color innerColor;
   final Color outerColor;
-  final int child;
+  final int? child;
   const MyPixel(
       {super.key,
-      required this.child,
+      this.child,
       required this.innerColor,
       required this.outerColor});
 
@@ -24,7 +24,7 @@ class MyPixel extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(4),
               color: innerColor,
-              child: Center(child: Text("$child")),
+              //child: Center(child: Text("$child")),
             ),
           ),
         ),

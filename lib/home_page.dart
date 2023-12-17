@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_pacman/path.dart';
 import 'package:project_pacman/pixel.dart';
 
 class Homepage extends StatefulWidget {
@@ -132,15 +133,15 @@ class _HomepageState extends State<Homepage> {
                   itemBuilder: (context, index) {
                     if (barriers.contains(index)) {
                       return MyPixel(
-                        child: index,
+                        // child: index,
                         innerColor: Colors.blue.shade800,
                         outerColor: Colors.blue.shade900,
                       );
                     } else {
-                      return MyPixel(
+                      return MyPath(
                         innerColor: Colors.yellow,
                         outerColor: Colors.black,
-                        child: index,
+                        // child: index,
                       );
                     }
                   }),
