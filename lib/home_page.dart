@@ -56,7 +56,6 @@ class _HomepageState extends State<Homepage> {
     131,
     120,
     109,
-    87,
     76,
     65,
     54,
