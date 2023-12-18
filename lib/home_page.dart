@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project_pacman/path.dart';
 import 'package:project_pacman/pixel.dart';
+import 'package:project_pacman/player.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -13,6 +14,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   static int numberInRow = 11;
   int numberOfSqures = numberInRow * 17;
+  int player = numberInRow * 15 + 1;
   List<int> barriers = [
     0,
     1,
@@ -131,14 +133,16 @@ class _HomepageState extends State<Homepage> {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: numberInRow),
                   itemBuilder: (context, index) {
-                    if (barriers.contains(index)) {
+                    if (player == index) {
+                      return const MyPlayer();
+                    } else if (barriers.contains(index)) {
                       return MyPixel(
                         // child: index,
                         innerColor: Colors.blue.shade800,
                         outerColor: Colors.blue.shade900,
                       );
                     } else {
-                      return MyPath(
+                      return const MyPath(
                         innerColor: Colors.yellow,
                         outerColor: Colors.black,
                         // child: index,
