@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project_pacman/path.dart';
@@ -52,7 +54,6 @@ class _HomepageState extends State<Homepage> {
     184,
     185,
     186,
-    175,
     164,
     153,
     142,
@@ -101,7 +102,7 @@ class _HomepageState extends State<Homepage> {
     140,
     151,
     162,
-    173,
+    175,
     26,
     37,
     38,
@@ -118,6 +119,15 @@ class _HomepageState extends State<Homepage> {
     52,
     63,
   ];
+
+  void startGame() {
+    Timer.periodic(Duration(milliseconds: 150), (timer) {
+      setState(() {
+        player++;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -162,10 +172,13 @@ class _HomepageState extends State<Homepage> {
                     style: GoogleFonts.pressStart2p(
                         color: Colors.white, fontSize: 20),
                   ),
-                  Text(
-                    "PLAY",
-                    style: GoogleFonts.pressStart2p(
-                        color: Colors.white, fontSize: 20),
+                  GestureDetector(
+                    onTap: startGame,
+                    child: Text(
+                      "PLAY",
+                      style: GoogleFonts.pressStart2p(
+                          color: Colors.white, fontSize: 20),
+                    ),
                   )
                 ],
               ),
