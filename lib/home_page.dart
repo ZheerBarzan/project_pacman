@@ -119,6 +119,7 @@ class _HomepageState extends State<Homepage> {
     52,
     63,
   ];
+  String direction = "right";
 
   void startGame() {
     Timer.periodic(const Duration(milliseconds: 150), (timer) {
@@ -139,28 +140,39 @@ class _HomepageState extends State<Homepage> {
           // the map area
           Expanded(
             flex: 5,
-            child: Container(
-              child: GridView.builder(
-                  itemCount: numberOfSqures,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: numberInRow),
-                  itemBuilder: (context, index) {
-                    if (player == index) {
-                      return const MyPlayer();
-                    } else if (barriers.contains(index)) {
-                      return MyPixel(
-                        // child: index,
-                        innerColor: Colors.blue.shade800,
-                        outerColor: Colors.blue.shade900,
-                      );
-                    } else {
-                      return const MyPath(
-                        innerColor: Colors.yellow,
-                        outerColor: Colors.black,
-                        // child: index,
-                      );
-                    }
-                  }),
+            child: GestureDetector(
+              onVerticalDragUpdate: ((details) {
+                if (details.delta.dy > 0) {
+                  direction = "down";
+                } else if (details.delta.dy < 0) {
+                  direction = "up";
+                }
+                print(direction);
+              }),
+              child: Container(
+                child: GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: numberOfSqures,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: numberInRow),
+                    itemBuilder: (context, index) {
+                      if (player == index) {
+                        return const MyPlayer();
+                      } else if (barriers.contains(index)) {
+                        return MyPixel(
+                          // child: index,
+                          innerColor: Colors.blue.shade800,
+                          outerColor: Colors.blue.shade900,
+                        );
+                      } else {
+                        return const MyPath(
+                          innerColor: Colors.yellow,
+                          outerColor: Colors.black,
+                          // child: index,
+                        );
+                      }
+                    }),
+              ),
             ),
           ),
           // the socre area
