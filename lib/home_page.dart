@@ -121,10 +121,12 @@ class _HomepageState extends State<Homepage> {
   ];
 
   void startGame() {
-    Timer.periodic(Duration(milliseconds: 150), (timer) {
-      setState(() {
-        player++;
-      });
+    Timer.periodic(const Duration(milliseconds: 150), (timer) {
+      if (!barriers.contains(player + 1)) {
+        setState(() {
+          player++;
+        });
+      }
     });
   }
 
