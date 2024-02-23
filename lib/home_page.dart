@@ -141,14 +141,20 @@ class _HomepageState extends State<Homepage> {
           Expanded(
             flex: 5,
             child: GestureDetector(
-              onVerticalDragUpdate: ((details) {
+              onVerticalDragUpdate: (details) {
                 if (details.delta.dy > 0) {
                   direction = "down";
                 } else if (details.delta.dy < 0) {
                   direction = "up";
                 }
-                print(direction);
-              }),
+              },
+              onHorizontalDragUpdate: (details) {
+                if (details.delta.dx > 0) {
+                  direction = "right";
+                } else if (details.delta.dx < 0) {
+                  direction = "left";
+                }
+              },
               child: Container(
                 child: GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
