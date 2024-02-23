@@ -123,12 +123,53 @@ class _HomepageState extends State<Homepage> {
 
   void startGame() {
     Timer.periodic(const Duration(milliseconds: 150), (timer) {
-      if (!barriers.contains(player + 1)) {
-        setState(() {
-          player++;
-        });
+      switch (direction) {
+        case "right":
+          moveRight();
+          break;
+        case "left":
+          moveLeft();
+          break;
+        case "up":
+          moveUp();
+          break;
+        case "down":
+          moveDown();
+          break;
       }
     });
+  }
+
+  void moveRight() {
+    if (!barriers.contains(player + 1)) {
+      setState(() {
+        player++;
+      });
+    }
+  }
+
+  void moveLeft() {
+    if (!barriers.contains(player - 1)) {
+      setState(() {
+        player--;
+      });
+    }
+  }
+
+  void moveUp() {
+    if (!barriers.contains(player - numberInRow)) {
+      setState(() {
+        player -= numberInRow;
+      });
+    }
+  }
+
+  void moveDown() {
+    if (!barriers.contains(player + numberInRow)) {
+      setState(() {
+        player += numberInRow;
+      });
+    }
   }
 
   @override
