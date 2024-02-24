@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -204,7 +205,32 @@ class _HomepageState extends State<Homepage> {
                         crossAxisCount: numberInRow),
                     itemBuilder: (context, index) {
                       if (player == index) {
-                        return const MyPlayer();
+                        switch (direction) {
+                          case "left":
+                            return Transform.rotate(
+                                angle: pi, child: const MyPlayer());
+                            break;
+                          case "right":
+                            return const MyPlayer();
+                            break;
+
+                          case "up":
+                            return Transform.rotate(
+                              angle: 3 * pi / 2,
+                              child: const MyPlayer(),
+                            );
+                            break;
+
+                          case "down":
+                            return Transform.rotate(
+                              angle: pi / 2,
+                              child: const MyPlayer(),
+                            );
+                            break;
+
+                          default:
+                            return const MyPlayer();
+                        }
                       } else if (barriers.contains(index)) {
                         return MyPixel(
                           // child: index,
