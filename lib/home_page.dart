@@ -120,10 +120,23 @@ class _HomepageState extends State<Homepage> {
     52,
     63,
   ];
+  List<int> food = [];
   String direction = "right";
+  bool preGame = true;
+  int score = 0;
 
   void startGame() {
-    Timer.periodic(const Duration(milliseconds: 150), (timer) {
+    preGame = false;
+
+    getFood();
+    Timer.periodic(
+        const Duration(
+          milliseconds: 120,
+        ), (timer) {
+      if (food.contains(player)) {
+        food.remove(player);
+        score++;
+      }
       switch (direction) {
         case "right":
           moveRight();
@@ -146,6 +159,14 @@ class _HomepageState extends State<Homepage> {
       setState(() {
         player++;
       });
+    }
+  }
+
+  void getFood() {
+    for (int i = 0; i < numberOfSqures; i++) {
+      if (!barriers.contains(i)) {
+        food.add(i);
+      }
     }
   }
 
@@ -237,8 +258,22 @@ class _HomepageState extends State<Homepage> {
                           innerColor: Colors.blue.shade800,
                           outerColor: Colors.blue.shade900,
                         );
-                      } else {
+                      }
+
+                      if (!food.contains(index)) {
                         return const MyPath(
+                          innerColor: Colors.black,
+                          outerColor: Colors.black,
+                          // child: index,
+                        );
+                      } else if (food.contains(index)) {
+                        return const MyPath(
+                          innerColor: Colors.yellow,
+                          outerColor: Colors.black,
+                          // child: index,
+                        );
+                      } else {
+                        const MyPath(
                           innerColor: Colors.yellow,
                           outerColor: Colors.black,
                           // child: index,
@@ -255,7 +290,7 @@ class _HomepageState extends State<Homepage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    "SCORE:",
+                    "SCORE: $score",
                     style: GoogleFonts.pressStart2p(
                         color: Colors.white, fontSize: 20),
                   ),
